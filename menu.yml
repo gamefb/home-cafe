@@ -45,7 +45,7 @@ options:
 
   sweetener:
     label: Sweetener
-    choices: [Vanilla, Caramel, Honey]
+    choices: [Sugar, Vanilla, Salted Caramel, Honey, Eggnog]
 
   extras:
     label: Extras
@@ -117,7 +117,7 @@ sections:
         options:
           milk: required
 
-  - name: Brewed
+  - name: Coffee
     needs: [Coffee]
     drinks:
       - name: French Press
