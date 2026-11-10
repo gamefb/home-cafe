@@ -1,0 +1,9 @@
+{
+  "name": "home-cafe-menu",
+  "private": true,
+  "type": "module",
+  "description": "Chalkboard menu for the Home Cafe, built from menu.yml",
+  "scripts": {
+    "validate": "node scripts/validate.mjs"
+  }
+}

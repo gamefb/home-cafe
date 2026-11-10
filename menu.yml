@@ -1,0 +1,149 @@
+# ───────────────────────────────────────────────────────────────
+#  Home Cafe menu
+#
+#  This is the only file you need to edit. Save, commit and push:
+#  GitHub checks it and publishes the site in about a minute.
+#
+#  Preview on your computer:  docker compose up  → http://localhost:8080
+#  Check for mistakes:        docker compose run --rm validate
+# ───────────────────────────────────────────────────────────────
+
+cafe:
+  name: Home Cafe
+  tagline: Coffee and tea, made to order
+
+
+# ── Out today ──────────────────────────────────────────────────
+# Anything listed here shows faded on the menu.
+# Use the name of a drink, an option choice, or something a drink
+# `needs` (like Coffee). Capitalization doesn't matter.
+#
+# Examples:
+#   - Oat          fades oat milk wherever it's offered
+#   - Cortado      fades just that drink
+#   - Coffee       fades every drink that needs coffee
+
+out:
+
+
+# ── Options ────────────────────────────────────────────────────
+# Each option has a label (shown on the menu) and a list of choices.
+#
+# To add a new option, for example toppings:
+#   1. Add it here:
+#        toppings:
+#          label: Toppings
+#          choices: [Whipped cream, Cinnamon, Cocoa]
+#   2. Offer it on a section or a single drink (see Menu below):
+#        options:
+#          toppings: optional
+
+options:
+  milk:
+    label: Milk
+    choices: [Whole, Oat, Almond]
+
+  sweetener:
+    label: Sweetener
+    choices: [Vanilla, Caramel, Honey]
+
+  extras:
+    label: Extras
+    choices: [Extra shot]
+
+  tea:
+    label: Tea
+    choices: [Earl Grey, English Breakfast, Green, Chamomile]
+
+
+# ── Menu ───────────────────────────────────────────────────────
+# Sections and drinks appear in the order written here.
+#
+# Section fields:
+#   name       shown as the heading
+#   needs      applies to every drink in the section
+#   options    applies to every drink in the section
+#   drinks     the list of drinks
+#
+# Drink fields:
+#   name         required
+#   description  one short line
+#   temps        [hot], [iced] or [hot, iced]
+#   needs        things it can't be made without; if one is listed
+#                under `out`, the drink fades
+#   options      option name: required, optional or none
+#                (`none` turns off an option the section offers)
+#   hidden       true keeps the drink in this file but off the menu
+#
+# A drink whose required option has every choice out also fades
+# (for example, a latte when every milk is out).
+
+sections:
+  - name: Espresso
+    needs: [Coffee]
+    options:
+      sweetener: optional
+      extras: optional
+    drinks:
+      - name: Espresso
+        description: A double shot, pulled to order.
+        temps: [hot]
+
+      - name: Americano
+        description: Espresso lengthened with hot water.
+        temps: [hot, iced]
+
+      - name: Cortado
+        description: Espresso cut with an equal splash of warm milk.
+        temps: [hot]
+        options:
+          milk: required
+
+      - name: Flat White
+        description: Espresso under a thin layer of velvety milk.
+        temps: [hot]
+        options:
+          milk: required
+
+      - name: Cappuccino
+        description: Espresso, steamed milk and a deep cap of foam.
+        temps: [hot]
+        options:
+          milk: required
+
+      - name: Latte
+        description: Espresso with plenty of steamed milk and a little foam.
+        temps: [hot, iced]
+        options:
+          milk: required
+
+  - name: Brewed
+    needs: [Coffee]
+    drinks:
+      - name: French Press
+        description: Full-bodied coffee, steeped for four minutes.
+        temps: [hot]
+        options:
+          milk: optional
+          sweetener: optional
+
+  - name: Tea
+    options:
+      tea: required
+      sweetener: optional
+    drinks:
+      - name: Pot of Tea
+        description: Loose leaf, steeped to order.
+        temps: [hot]
+        options:
+          milk: optional
+
+      - name: Iced Tea
+        description: Brewed strong and poured over ice.
+        temps: [iced]
+
+      - name: Tea Latte
+        description: Tea steeped strong and topped with steamed milk. Earl Grey with vanilla makes a London Fog.
+        temps: [hot, iced]
+        options:
+          milk: required

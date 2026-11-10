@@ -1,0 +1,18 @@
+# Preview the menu:      docker compose up            → http://localhost:8080
+# Check menu.yml:        docker compose run --rm validate
+
+services:
+  menu:
+    image: nginx:alpine
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/usr/share/nginx/html:ro
+
+  validate:
+    image: node:22-alpine
+    profiles: [tools]
+    working_dir: /app
+    volumes:
+      - ./:/app:ro
+    command: node scripts/validate.mjs

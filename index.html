@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Home Cafe</title>
+  <meta name="description" content="Coffee and tea, made to order.">
+  <meta name="theme-color" content="#5a3d27">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/fredericka-the-great.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/patrick-hand.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script type="module" src="assets/app.js"></script>
+</head>
+<body>
+  <div class="frame" aria-hidden="true"></div>
+
+  <div class="board">
+    <header class="masthead">
+      <svg class="cup chalk-grain" viewBox="0 0 120 104" aria-hidden="true" focusable="false">
+        <defs>
+          <filter id="wobble" x="-10%" y="-10%" width="120%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="7" result="n"/>
+            <feDisplacementMap in="SourceGraphic" in2="n" scale="3"/>
+          </filter>
+        </defs>
+        <g filter="url(#wobble)" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+          <path class="stroke steam" pathLength="1" d="M47 34c-6-7 5-11-1-21"/>
+          <path class="stroke steam" pathLength="1" d="M60 32c-6-8 6-12 0-24"/>
+          <path class="stroke steam" pathLength="1" d="M73 34c-6-7 5-11-1-21"/>
+          <path class="stroke" pathLength="1" d="M27 45c0 22 9 37 24 37h18c15 0 24-15 24-37"/>
+          <path class="stroke" pathLength="1" d="M26 45c3 5 63 6 68 0c-3-5-65-5-68 0"/>
+          <path class="stroke" pathLength="1" d="M92 52c15-4 17 18-2 18"/>
+          <path class="stroke" pathLength="1" d="M14 88c10 9 82 9 92 0c-8-4-21-5-26-5M40 83c-7 0-19 1-26 5"/>
+        </g>
+      </svg>
+      <h1 class="cafe-name chalk-grain" id="cafe-name">Home Cafe</h1>
+      <p class="tagline" id="cafe-tagline"></p>
+    </header>
+
+    <main id="menu" class="menu" aria-live="polite">
+      <p class="loading">Writing up the board…</p>
+    </main>
+
+    <footer class="legend" id="legend" hidden>
+      Faded items are out today.
+    </footer>
+  </div>
+
+  <noscript>
+    <p class="notice">This menu needs JavaScript turned on to show the drinks.</p>
+  </noscript>
+</body>
+</html>
